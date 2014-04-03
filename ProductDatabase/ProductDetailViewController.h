@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ProductDetailViewController.h
 //  ProductDatabase
 //
 //  Created by BrotoMan on 4/3/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ProductDetailViewController : UIViewController
+
+- (void)loadProduct:(NSDictionary *)product;
 
 @end

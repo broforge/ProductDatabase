@@ -14,13 +14,18 @@
 		02174D3218ED405200389D7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D3118ED405200389D7B /* main.m */; };
 		02174D3618ED405200389D7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D3518ED405200389D7B /* AppDelegate.m */; };
 		02174D3918ED405200389D7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02174D3718ED405200389D7B /* Main.storyboard */; };
-		02174D3C18ED405200389D7B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D3B18ED405200389D7B /* ViewController.m */; };
+		02174D3C18ED405200389D7B /* ProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D3B18ED405200389D7B /* ProductTableViewController.m */; };
 		02174D3E18ED405200389D7B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02174D3D18ED405200389D7B /* Images.xcassets */; };
 		02174D4518ED405200389D7B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02174D4418ED405200389D7B /* XCTest.framework */; };
 		02174D4618ED405200389D7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02174D2518ED405200389D7B /* Foundation.framework */; };
 		02174D4718ED405200389D7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02174D2918ED405200389D7B /* UIKit.framework */; };
 		02174D4F18ED405200389D7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02174D4D18ED405200389D7B /* InfoPlist.strings */; };
 		02174D5118ED405200389D7B /* ProductDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D5018ED405200389D7B /* ProductDatabaseTests.m */; };
+		02174D5C18ED406D00389D7B /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D5B18ED406D00389D7B /* DatabaseManager.m */; };
+		02174D5E18ED40A900389D7B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02174D5D18ED40A900389D7B /* libsqlite3.dylib */; };
+		02174D6118ED40CD00389D7B /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6018ED40CD00389D7B /* Product.m */; };
+		02174D6318ED471500389D7B /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 02174D6218ED471500389D7B /* MockData.json */; };
+		02174D6618ED6F6300389D7B /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6518ED6F6300389D7B /* ProductDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +50,22 @@
 		02174D3418ED405200389D7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02174D3518ED405200389D7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		02174D3818ED405200389D7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		02174D3A18ED405200389D7B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		02174D3B18ED405200389D7B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		02174D3A18ED405200389D7B /* ProductTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductTableViewController.h; sourceTree = "<group>"; };
+		02174D3B18ED405200389D7B /* ProductTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewController.m; sourceTree = "<group>"; };
 		02174D3D18ED405200389D7B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		02174D4318ED405200389D7B /* ProductDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02174D4418ED405200389D7B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		02174D4C18ED405200389D7B /* ProductDatabaseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProductDatabaseTests-Info.plist"; sourceTree = "<group>"; };
 		02174D4E18ED405200389D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		02174D5018ED405200389D7B /* ProductDatabaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDatabaseTests.m; sourceTree = "<group>"; };
+		02174D5A18ED406D00389D7B /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		02174D5B18ED406D00389D7B /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		02174D5D18ED40A900389D7B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		02174D5F18ED40CD00389D7B /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		02174D6018ED40CD00389D7B /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		02174D6218ED471500389D7B /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		02174D6418ED6F6300389D7B /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		02174D6518ED6F6300389D7B /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02174D5E18ED40A900389D7B /* libsqlite3.dylib in Frameworks */,
 				02174D2818ED405200389D7B /* CoreGraphics.framework in Frameworks */,
 				02174D2A18ED405200389D7B /* UIKit.framework in Frameworks */,
 				02174D2618ED405200389D7B /* Foundation.framework in Frameworks */,
@@ -101,6 +115,7 @@
 		02174D2418ED405200389D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02174D5D18ED40A900389D7B /* libsqlite3.dylib */,
 				02174D2518ED405200389D7B /* Foundation.framework */,
 				02174D2718ED405200389D7B /* CoreGraphics.framework */,
 				02174D2918ED405200389D7B /* UIKit.framework */,
@@ -115,10 +130,16 @@
 				02174D3418ED405200389D7B /* AppDelegate.h */,
 				02174D3518ED405200389D7B /* AppDelegate.m */,
 				02174D3718ED405200389D7B /* Main.storyboard */,
-				02174D3A18ED405200389D7B /* ViewController.h */,
-				02174D3B18ED405200389D7B /* ViewController.m */,
+				02174D3A18ED405200389D7B /* ProductTableViewController.h */,
+				02174D3B18ED405200389D7B /* ProductTableViewController.m */,
 				02174D3D18ED405200389D7B /* Images.xcassets */,
 				02174D2C18ED405200389D7B /* Supporting Files */,
+				02174D5A18ED406D00389D7B /* DatabaseManager.h */,
+				02174D5B18ED406D00389D7B /* DatabaseManager.m */,
+				02174D5F18ED40CD00389D7B /* Product.h */,
+				02174D6018ED40CD00389D7B /* Product.m */,
+				02174D6418ED6F6300389D7B /* ProductDetailViewController.h */,
+				02174D6518ED6F6300389D7B /* ProductDetailViewController.m */,
 			);
 			path = ProductDatabase;
 			sourceTree = "<group>";
@@ -126,6 +147,7 @@
 		02174D2C18ED405200389D7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				02174D6218ED471500389D7B /* MockData.json */,
 				02174D2D18ED405200389D7B /* ProductDatabase-Info.plist */,
 				02174D2E18ED405200389D7B /* InfoPlist.strings */,
 				02174D3118ED405200389D7B /* main.m */,
@@ -229,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02174D3E18ED405200389D7B /* Images.xcassets in Resources */,
+				02174D6318ED471500389D7B /* MockData.json in Resources */,
 				02174D3018ED405200389D7B /* InfoPlist.strings in Resources */,
 				02174D3918ED405200389D7B /* Main.storyboard in Resources */,
 			);
@@ -249,7 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02174D3C18ED405200389D7B /* ViewController.m in Sources */,
+				02174D5C18ED406D00389D7B /* DatabaseManager.m in Sources */,
+				02174D6118ED40CD00389D7B /* Product.m in Sources */,
+				02174D3C18ED405200389D7B /* ProductTableViewController.m in Sources */,
+				02174D6618ED6F6300389D7B /* ProductDetailViewController.m in Sources */,
 				02174D3618ED405200389D7B /* AppDelegate.m in Sources */,
 				02174D3218ED405200389D7B /* main.m in Sources */,
 			);
@@ -379,6 +405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProductDatabase/ProductDatabase-Prefix.pch";
 				INFOPLIST_FILE = "ProductDatabase/ProductDatabase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,6 +419,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ProductDatabase/ProductDatabase-Prefix.pch";
 				INFOPLIST_FILE = "ProductDatabase/ProductDatabase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
