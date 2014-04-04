@@ -130,8 +130,6 @@
 				02174D3418ED405200389D7B /* AppDelegate.h */,
 				02174D3518ED405200389D7B /* AppDelegate.m */,
 				02174D3718ED405200389D7B /* Main.storyboard */,
-				02174D3A18ED405200389D7B /* ProductTableViewController.h */,
-				02174D3B18ED405200389D7B /* ProductTableViewController.m */,
 				02174D3D18ED405200389D7B /* Images.xcassets */,
 				02174D2C18ED405200389D7B /* Supporting Files */,
 				02174D5A18ED406D00389D7B /* DatabaseManager.h */,
@@ -140,6 +138,8 @@
 				02174D6018ED40CD00389D7B /* Product.m */,
 				02174D6418ED6F6300389D7B /* ProductDetailViewController.h */,
 				02174D6518ED6F6300389D7B /* ProductDetailViewController.m */,
+				02174D3A18ED405200389D7B /* ProductTableViewController.h */,
+				02174D3B18ED405200389D7B /* ProductTableViewController.m */,
 			);
 			path = ProductDatabase;
 			sourceTree = "<group>";

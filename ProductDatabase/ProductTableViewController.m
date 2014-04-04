@@ -24,8 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DatabaseManager *databaseManager = [DatabaseManager sharedInstance];
-    self.products = [databaseManager queryProducts];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.products = [[DatabaseManager sharedInstance] queryProducts];
     [self.tableView reloadData];
 }
 
@@ -45,8 +47,6 @@
     NSDictionary *info = [self.products objectAtIndex:indexPath.row];
     UILabel *labelName = (UILabel *)[cell.contentView viewWithTag:1];
     labelName.text = [info objectForKey:@"name"];
-    UILabel *labelImage = (UILabel *)[cell.contentView viewWithTag:2];
-    labelImage.text = [info objectForKey:@"image"];
     UILabel *labelId = (UILabel *)[cell.contentView viewWithTag:3];
     labelId.text = [[info objectForKey:@"id"] stringValue];
     
@@ -59,14 +59,9 @@
         
     }
     else if ([segue.identifier isEqualToString:@"EditProduct"]) {
-        NSDictionary *info = [self.products objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-        NSUInteger identifier = [[info objectForKey:@"id"] unsignedIntegerValue];
-        
-        DatabaseManager *databaseManager = [DatabaseManager sharedInstance];
-        NSDictionary *productDetails = [databaseManager queryProductWithIdentifier:identifier];
-        
+        NSDictionary *info = [self.products objectAtIndex:[self.tableView indexPathForSelectedRow].row];        
         ProductDetailViewController *detailViewController = [segue destinationViewController];
-        [detailViewController loadProduct:productDetails];
+        [detailViewController loadProductDetails:info];
     }
 }
 

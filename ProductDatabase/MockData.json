@@ -1,6 +1,5 @@
 [
 	{
-		"id": 1,
     	"name": "Shirt",
     	"description": "A fine shirt",
     	"price": 5.99,
@@ -8,7 +7,6 @@
     	"image": "Shirt.png",
     },
     {
-    	"id": 2,
     	"name": "Pants",
     	"description": "A pair of pants",
     	"price": 5.99,
@@ -16,7 +14,6 @@
     	"image": "Pants.png",
     },
     {
-    	"id": 3,
     	"name": "Blouse",
     	"description": "A fancy blouse",
     	"price": 5.99,

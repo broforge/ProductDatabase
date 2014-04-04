@@ -16,8 +16,6 @@ static NSString * const MockDataFilename = @"MockData";
     sqlite3 *database;
 }
 
-@property (nonatomic,strong) NSString *databasePath;
-
 @end
 
 @implementation DatabaseManager
@@ -38,44 +36,33 @@ static NSString * const MockDataFilename = @"MockData";
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    self.databasePath = [documentsDirectory stringByAppendingPathComponent: DatabaseFilename];
+    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent: DatabaseFilename];
     
-    NSLog(@"database path: %@", self.databasePath);
+    NSLog(@"database path: %@", databasePath);
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if (![fileManager fileExistsAtPath: self.databasePath]) {
-        const char *dbpath = [self.databasePath UTF8String];
-        if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+    BOOL newDatabase = ![fileManager fileExistsAtPath: databasePath];
+    
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        if (newDatabase) {
+            NSMutableString *instruction = [NSMutableString stringWithString:@"CREATE TABLE IF NOT EXISTS products ("];
+            [instruction appendString:@"id INTEGER PRIMARY KEY AUTOINCREMENT, "];
+            [instruction appendString:@"name TEXT, "];
+            [instruction appendString:@"description TEXT, "];
+            [instruction appendString:@"price REAL, "];
+            [instruction appendString:@"salePrice REAL, "];
+            [instruction appendString:@"image TEXT)"];
+            
             char *errMsg;
-            NSMutableString *sqlString = [NSMutableString stringWithString:@"CREATE TABLE IF NOT EXISTS products ("];
-            [sqlString appendString:@"id INTEGER PRIMARY KEY AUTOINCREMENT, "];
-            [sqlString appendString:@"name TEXT, "];
-            [sqlString appendString:@"description TEXT, "];
-            [sqlString appendString:@"price REAL, "];
-            [sqlString appendString:@"salePrice REAL, "];
-            [sqlString appendString:@"image TEXT)"];
-            
-            NSLog(@"sql statement: %@", sqlString);
-            
-            const char *sql_stmt = [sqlString cStringUsingEncoding:NSASCIIStringEncoding];
-            
-            if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK) {
-                NSLog(@"Failed to create table");
+            if (sqlite3_exec(database, [instruction UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+                NSLog(@"Create failed: %s", sqlite3_errmsg(database));
             }
-            
             [self loadMockData];
-        }
-        else {
-            NSLog(@"Failed to open/create database");
         }
     }
     else {
-        const char *dbpath = [self.databasePath UTF8String];
-        if (sqlite3_open(dbpath, &database) != SQLITE_OK) {
-            NSLog(@"Failed to open/create database");
-
-        }
+        NSLog(@"Failed to open/create database");
     }
     
     return self;
@@ -99,52 +86,57 @@ static NSString * const MockDataFilename = @"MockData";
     }
 }
     
-- (void)insertProductWithDictionary:(NSDictionary*)dictionary {
+- (void)insertProduct:(NSDictionary*)product {
+    NSString *instruction = @"INSERT INTO products (name, description, price, salePrice, image) VALUES(?,?,?,?,?)";
+
+    sqlite3_stmt *statement;
+    sqlite3_prepare_v2(database, [instruction UTF8String], -1, &statement, NULL);
+    sqlite3_bind_text(statement, 1, [[product objectForKey:@"name"] UTF8String], -1, 0);
+    sqlite3_bind_text(statement, 2, [[product objectForKey:@"description"] UTF8String], -1, 0);
+    sqlite3_bind_double(statement, 3, [[product objectForKey:@"price"] doubleValue]);
+    sqlite3_bind_double(statement, 4, [[product objectForKey:@"salePrice"] doubleValue]);
+    sqlite3_bind_text(statement, 5, [[product objectForKey:@"image"] UTF8String], -1, 0);
     
-}
-    
-- (void)insertProductsWithArray:(NSArray*)array {
-    sqlite3_stmt *insert_statement;
-    const char *sql = "INSERT INTO products (id, name, description, price, salePrice, image) VALUES(?,?,?,?,?,?)";
-    sqlite3_prepare_v2(database, sql, -1, &insert_statement, NULL);
-    for (NSDictionary *item in array) {
-        int identifier = [[item objectForKey:@"id"] integerValue];
-        sqlite3_bind_int(insert_statement, 1, identifier);
-        const char *name = [[item objectForKey:@"name"] UTF8String];
-        sqlite3_bind_text(insert_statement, 2, name, -1, 0);
-        const char *description = [[item objectForKey:@"description"] UTF8String];
-        sqlite3_bind_text(insert_statement, 3, description, -1, 0);
-        double price = [[item objectForKey:@"price"] doubleValue];
-        sqlite3_bind_double(insert_statement, 4, price);
-        double salePrice = [[item objectForKey:@"salePrice"] doubleValue];
-        sqlite3_bind_double(insert_statement, 5, salePrice);
-        const char *image = [[item objectForKey:@"image"] UTF8String];
-        sqlite3_bind_text(insert_statement, 6, image, -1, 0);
-        
-        if (sqlite3_step(insert_statement) != SQLITE_DONE) {
-            NSLog(@"Insert failed: %s", sqlite3_errmsg(database));
-        }
-        sqlite3_reset(insert_statement);
+    if (sqlite3_step(statement) != SQLITE_DONE) {
+        NSLog(@"insert failed: %s", sqlite3_errmsg(database));
     }
     
-    sqlite3_finalize(insert_statement);
+    sqlite3_finalize(statement);
+
+}
+
+- (void)insertProductsWithArray:(NSArray*)array {
+    NSString *instruction = @"INSERT INTO products (name, description, price, salePrice, image) VALUES(?,?,?,?,?)";
+    
+    sqlite3_stmt *statement;
+    sqlite3_prepare_v2(database, [instruction UTF8String], -1, &statement, NULL);
+    for (NSDictionary *product in array) {
+        sqlite3_bind_text(statement, 1, [[product objectForKey:@"name"] UTF8String], -1, 0);
+        sqlite3_bind_text(statement, 2, [[product objectForKey:@"description"] UTF8String], -1, 0);
+        sqlite3_bind_double(statement, 3, [[product objectForKey:@"price"] doubleValue]);
+        sqlite3_bind_double(statement, 4, [[product objectForKey:@"salePrice"] doubleValue]);
+        sqlite3_bind_text(statement, 5, [[product objectForKey:@"image"] UTF8String], -1, 0);
+        
+        if (sqlite3_step(statement) != SQLITE_DONE) {
+            NSLog(@"Insert array failed: %s", sqlite3_errmsg(database));
+        }
+        sqlite3_reset(statement);
+    }
+    
+    sqlite3_finalize(statement);
 }
 
 - (NSArray*)queryProducts {
     NSMutableArray* queryResults = [NSMutableArray array];
     
-    const char *sql = "SELECT id, name, image FROM products ORDER BY name ASC";
+    NSString* query = @"SELECT id, name FROM products ORDER BY id ASC";
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(database, sql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             int identifier = sqlite3_column_int(statement, 0);
             NSString *name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 1)];
-            NSString *image = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 2)];
 
-            NSDictionary* entry = [NSDictionary dictionaryWithObjectsAndKeys:@(identifier), @"id",
-                                                                            name, @"name",
-                                                                            image, @"image", nil];
-
+            NSDictionary* entry = [NSDictionary dictionaryWithObjectsAndKeys:@(identifier), @"id", name, @"name", nil];
             [queryResults addObject:entry];
         }
         sqlite3_finalize(statement);
@@ -180,6 +172,32 @@ static NSString * const MockDataFilename = @"MockData";
        sqlite3_finalize(statement);
     }
     return retval;
+}
+
+- (void)updateProduct:(NSDictionary *)product {
+    NSMutableString *instruction = [NSMutableString stringWithString:@"UPDATE products SET "];
+    [instruction appendFormat:@"name='%@', ",[product objectForKey:@"name"]];
+    [instruction appendFormat:@"description='%@', ",[product objectForKey:@"description"]];
+    [instruction appendFormat:@"price=%@, ",[product objectForKey:@"price"]];
+    [instruction appendFormat:@"salePrice=%@, ",[product objectForKey:@"salePrice"]];
+    [instruction appendFormat:@"image='%@' ",[product objectForKey:@"image"]];
+    [instruction appendFormat:@"WHERE id=%@",[product objectForKey:@"id"]];
+    sqlite3_stmt *statement;
+    sqlite3_prepare_v2(database, [instruction UTF8String], -1, &statement, NULL);
+    if (sqlite3_step(statement) != SQLITE_DONE) {
+        NSLog(@"update failed: %s", sqlite3_errmsg(database));
+    }
+    sqlite3_finalize(statement);
+}
+
+- (void)deleteProduct:(NSDictionary *)product {
+    NSString *instruction = [NSString stringWithFormat:@"DELETE FROM products WHERE id=%@", [product objectForKey:@"id"]];
+    sqlite3_stmt *statement;
+    sqlite3_prepare_v2(database, [instruction UTF8String], -1, &statement, NULL);
+    if (sqlite3_step(statement) != SQLITE_DONE) {
+        NSLog(@"delete failed: %s", sqlite3_errmsg(database));
+    }
+    sqlite3_finalize(statement);
 }
 
 @end
