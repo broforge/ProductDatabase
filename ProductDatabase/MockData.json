@@ -4,20 +4,24 @@
     	"description": "A fine shirt",
     	"price": 5.99,
     	"salePrice": 3.99,
-    	"image": "Shirt.png",
+    	"image": "Shirt",
+        "colors": ["Red", "Green"]
+
     },
     {
     	"name": "Pants",
     	"description": "A pair of pants",
     	"price": 5.99,
     	"salePrice": 3.99,
-    	"image": "Pants.png",
+    	"image": "Pants",
+        "colors": ["Red", "Blue"]
     },
     {
     	"name": "Blouse",
     	"description": "A fancy blouse",
     	"price": 5.99,
     	"salePrice": 3.99,
-    	"image": "Blouse.png",
+    	"image": "Blouse",
+        "colors": ["Green", "Blue"]
     }
 ]

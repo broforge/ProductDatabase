@@ -12,11 +12,13 @@
 
 + (id)sharedInstance;
 
-- (void)insertProduct:(NSDictionary*)product;
-- (void)insertProductsWithArray:(NSArray*)array;
-- (NSArray*)queryProducts;
-- (NSDictionary*)queryProductWithIdentifier:(NSUInteger)productIdentifier;
-- (void)updateProduct:(NSDictionary *)product;
+- (NSArray *)queryProducts;
+- (NSDictionary *)queryProductDetailsWithId:(NSUInteger)productIdentifier;
+- (void)insertProduct:(NSDictionary *)product;
+- (void)insertProductsWithArray:(NSArray *)array;
 - (void)deleteProduct:(NSDictionary *)product;
+- (void)updateProduct:(NSDictionary *)product;
+
+- (NSDictionary *)mockData;
 
 @end

@@ -23,9 +23,10 @@
 		02174D5118ED405200389D7B /* ProductDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D5018ED405200389D7B /* ProductDatabaseTests.m */; };
 		02174D5C18ED406D00389D7B /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D5B18ED406D00389D7B /* DatabaseManager.m */; };
 		02174D5E18ED40A900389D7B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02174D5D18ED40A900389D7B /* libsqlite3.dylib */; };
-		02174D6118ED40CD00389D7B /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6018ED40CD00389D7B /* Product.m */; };
 		02174D6318ED471500389D7B /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 02174D6218ED471500389D7B /* MockData.json */; };
 		02174D6618ED6F6300389D7B /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6518ED6F6300389D7B /* ProductDetailViewController.m */; };
+		02174D6918EEC66000389D7B /* ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6818EEC66000389D7B /* ResourceManager.m */; };
+		02174D6C18EED80400389D7B /* ScrollingImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02174D6B18EED80400389D7B /* ScrollingImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,11 +62,13 @@
 		02174D5A18ED406D00389D7B /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		02174D5B18ED406D00389D7B /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		02174D5D18ED40A900389D7B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		02174D5F18ED40CD00389D7B /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
-		02174D6018ED40CD00389D7B /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		02174D6218ED471500389D7B /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		02174D6418ED6F6300389D7B /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
 		02174D6518ED6F6300389D7B /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		02174D6718EEC66000389D7B /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
+		02174D6818EEC66000389D7B /* ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceManager.m; sourceTree = "<group>"; };
+		02174D6A18EED80400389D7B /* ScrollingImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingImageViewController.h; sourceTree = "<group>"; };
+		02174D6B18EED80400389D7B /* ScrollingImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +137,14 @@
 				02174D2C18ED405200389D7B /* Supporting Files */,
 				02174D5A18ED406D00389D7B /* DatabaseManager.h */,
 				02174D5B18ED406D00389D7B /* DatabaseManager.m */,
-				02174D5F18ED40CD00389D7B /* Product.h */,
-				02174D6018ED40CD00389D7B /* Product.m */,
 				02174D6418ED6F6300389D7B /* ProductDetailViewController.h */,
 				02174D6518ED6F6300389D7B /* ProductDetailViewController.m */,
 				02174D3A18ED405200389D7B /* ProductTableViewController.h */,
 				02174D3B18ED405200389D7B /* ProductTableViewController.m */,
+				02174D6718EEC66000389D7B /* ResourceManager.h */,
+				02174D6818EEC66000389D7B /* ResourceManager.m */,
+				02174D6A18EED80400389D7B /* ScrollingImageViewController.h */,
+				02174D6B18EED80400389D7B /* ScrollingImageViewController.m */,
 			);
 			path = ProductDatabase;
 			sourceTree = "<group>";
@@ -273,9 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02174D5C18ED406D00389D7B /* DatabaseManager.m in Sources */,
-				02174D6118ED40CD00389D7B /* Product.m in Sources */,
+				02174D6918EEC66000389D7B /* ResourceManager.m in Sources */,
 				02174D3C18ED405200389D7B /* ProductTableViewController.m in Sources */,
 				02174D6618ED6F6300389D7B /* ProductDetailViewController.m in Sources */,
+				02174D6C18EED80400389D7B /* ScrollingImageViewController.m in Sources */,
 				02174D3618ED405200389D7B /* AppDelegate.m in Sources */,
 				02174D3218ED405200389D7B /* main.m in Sources */,
 			);
@@ -407,6 +413,7 @@
 				INFOPLIST_FILE = "ProductDatabase/ProductDatabase-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -421,6 +428,7 @@
 				INFOPLIST_FILE = "ProductDatabase/ProductDatabase-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -484,6 +492,7 @@
 				02174D5618ED405200389D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02174D5718ED405200389D7B /* Build configuration list for PBXNativeTarget "ProductDatabaseTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +501,7 @@
 				02174D5918ED405200389D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

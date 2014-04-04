@@ -9,7 +9,7 @@
 #import "ProductTableViewController.h"
 #import "DatabaseManager.h"
 #import "ProductDetailViewController.h"
-
+#import "ResourceManager.h"
 @interface ProductTableViewController ()
 
 @property (nonatomic,strong) NSArray *products;
@@ -53,12 +53,11 @@
     return cell;
 }
 
+#pragma mark - Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddProduct"]) {
-        
-    }
-    else if ([segue.identifier isEqualToString:@"EditProduct"]) {
+    if ([segue.identifier isEqualToString:@"EditProduct"]) {
         NSDictionary *info = [self.products objectAtIndex:[self.tableView indexPathForSelectedRow].row];        
         ProductDetailViewController *detailViewController = [segue destinationViewController];
         [detailViewController loadProductDetails:info];
