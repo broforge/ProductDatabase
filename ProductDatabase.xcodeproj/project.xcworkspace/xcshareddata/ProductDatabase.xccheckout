@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9A8C53F0-99EF-49E3-AAF0-7433BB8EC383</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ProductDatabase</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>601D7F42-C1EF-470D-84C8-82241D91E92B</key>
+		<string>ssh://github.com/broforge/ProductDatabase.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ProductDatabase.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>601D7F42-C1EF-470D-84C8-82241D91E92B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/broforge/ProductDatabase.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>601D7F42-C1EF-470D-84C8-82241D91E92B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>601D7F42-C1EF-470D-84C8-82241D91E92B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ProductDatabase</string>
+		</dict>
+	</array>
+</dict>
+</plist>

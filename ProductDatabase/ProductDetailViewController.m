@@ -54,7 +54,8 @@
     
     self.currentImage = [details objectForKey:@"image"];
     self.imageView.image = [UIImage imageNamed:self.currentImage];
-    self.colorArray = [details objectForKey:@"colors"];
+    [self.colorArray removeAllObjects];
+    [self.colorArray addObjectsFromArray:[details objectForKey:@"colors"]];
     [self.tableView reloadData];
     
     NSInteger row = [self.imageNames indexOfObject:self.currentImage];
